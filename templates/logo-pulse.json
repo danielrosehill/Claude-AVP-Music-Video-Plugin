@@ -1,0 +1,92 @@
+{
+  "description": "Brand-centred: logo in the middle pulsing with the beat, mirrored bar visualiser behind it, title centred near the bottom. Best when you have a strong logo and no cover art.",
+  "output": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "lyrics": {
+    "position": "top",
+    "margin_v": "H*0.08",
+    "size": "H*0.06"
+  },
+  "layers": [
+    {
+      "if": "background_image",
+      "component": "image",
+      "cover": true,
+      "blur": "{{brand.background_blur|16}}",
+      "darken": "{{brand.background_darken|0.55}}",
+      "set": {
+        "image": "{{background_image}}"
+      }
+    },
+    {
+      "if": "background_video",
+      "component": "video",
+      "set": {
+        "video": "{{background_video}}",
+        "loop": true
+      }
+    },
+    {
+      "if": "!background",
+      "component": "color",
+      "set": {
+        "color1": "{{brand.colors.background|#14142b}}",
+        "color2": "{{brand.colors.secondary|#3a2160}}",
+        "fillType": "Linear Gradient"
+      }
+    },
+    {
+      "component": "classic",
+      "set": {
+        "layout": "Classic",
+        "visColor": "{{brand.colors.waveform|#ffffff}}",
+        "scale": 30
+      }
+    },
+    {
+      "if": "brand.logo",
+      "component": "image",
+      "fit": [
+        "W*0.22",
+        "H*0.22"
+      ],
+      "anchor": "center",
+      "set": {
+        "image": "{{brand.logo}}",
+        "respondToAudio": true,
+        "sensitivity": 20
+      }
+    },
+    {
+      "component": "text",
+      "set": {
+        "title": "{{title}}",
+        "font": "{{brand.font.file|DejaVu Sans}}",
+        "fontStyle": "Bold",
+        "fontSize": "H*0.055",
+        "textColor": "{{brand.colors.text|#ffffff}}",
+        "alignment": "Middle",
+        "xPosition": "W/2",
+        "yPosition": "H*0.88",
+        "shadow": true
+      }
+    },
+    {
+      "if": "artist",
+      "component": "text",
+      "set": {
+        "title": "{{artist}}",
+        "font": "{{brand.font.file|DejaVu Sans}}",
+        "fontSize": "H*0.032",
+        "textColor": "{{brand.colors.primary|#ffcc00}}",
+        "alignment": "Middle",
+        "xPosition": "W/2",
+        "yPosition": "H*0.94",
+        "shadow": true
+      }
+    }
+  ]
+}

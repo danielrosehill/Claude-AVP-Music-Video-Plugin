@@ -1,0 +1,12 @@
+{
+  "name": "avp-music-video",
+  "version": "0.1.0",
+  "description": "Turn an audio file (e.g. a Suno song) into a branded music video with audio-visualizer-python (avp): install avp, discover brand assets in a repo, render from JSON layer templates (waveform, spectrum, bars, logo, title), burn in karaoke lyrics, and encode as small as possible. Headless, with fixes for avp 2.2.4 render bugs.",
+  "author": {
+    "name": "Daniel Rosehill",
+    "url": "https://github.com/danielrosehill"
+  },
+  "repository": "https://github.com/danielrosehill/Claude-AVP-Music-Video-Plugin",
+  "license": "MIT",
+  "keywords": ["avp", "audio-visualizer-python", "music-video", "audiogram", "waveform", "visualizer", "karaoke", "lyrics", "suno", "ffmpeg", "branding"]
+}

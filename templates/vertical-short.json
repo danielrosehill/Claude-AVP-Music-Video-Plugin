@@ -1,0 +1,93 @@
+{
+  "description": "9:16 for Shorts / Reels / TikTok / WhatsApp status: logo top-centre, waveform through the middle, title + artist in the lower third (above the platform UI overlay zone).",
+  "output": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "lyrics": {
+    "position": "bottom",
+    "margin_v": "H*0.14",
+    "size": "W*0.065"
+  },
+  "layers": [
+    {
+      "if": "background_image",
+      "component": "image",
+      "cover": true,
+      "blur": "{{brand.background_blur|14}}",
+      "darken": "{{brand.background_darken|0.45}}",
+      "set": {
+        "image": "{{background_image}}"
+      }
+    },
+    {
+      "if": "background_video",
+      "component": "video",
+      "set": {
+        "video": "{{background_video}}",
+        "loop": true
+      }
+    },
+    {
+      "if": "!background",
+      "component": "color",
+      "set": {
+        "color1": "{{brand.colors.background|#14142b}}",
+        "color2": "{{brand.colors.secondary|#3a2160}}",
+        "fillType": "Linear Gradient"
+      }
+    },
+    {
+      "component": "waveform",
+      "set": {
+        "mode": "Cline",
+        "mono": true,
+        "amplitude": "Linear",
+        "color": "{{brand.colors.waveform|#ffffff}}",
+        "opacity": 60
+      }
+    },
+    {
+      "if": "brand.logo",
+      "component": "image",
+      "fit": [
+        "W*0.4",
+        "H*0.1"
+      ],
+      "anchor": "top-center",
+      "margin": "H*0.08",
+      "set": {
+        "image": "{{brand.logo}}"
+      }
+    },
+    {
+      "component": "text",
+      "set": {
+        "title": "{{title}}",
+        "font": "{{brand.font.file|DejaVu Sans}}",
+        "fontStyle": "Bold",
+        "fontSize": "W*0.075",
+        "textColor": "{{brand.colors.text|#ffffff}}",
+        "alignment": "Middle",
+        "xPosition": "W/2",
+        "yPosition": "H*0.70",
+        "shadow": true
+      }
+    },
+    {
+      "if": "artist",
+      "component": "text",
+      "set": {
+        "title": "{{artist}}",
+        "font": "{{brand.font.file|DejaVu Sans}}",
+        "fontSize": "W*0.045",
+        "textColor": "{{brand.colors.primary|#ffcc00}}",
+        "alignment": "Middle",
+        "xPosition": "W/2",
+        "yPosition": "H*0.745",
+        "shadow": true
+      }
+    }
+  ]
+}

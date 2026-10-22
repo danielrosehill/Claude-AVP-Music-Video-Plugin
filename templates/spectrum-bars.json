@@ -1,0 +1,92 @@
+{
+  "description": "Frequency bars rising from the bottom edge in the brand primary colour over a darkened background; logo top-right, title + artist top-left.",
+  "output": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "lyrics": {
+    "position": "middle",
+    "size": "H*0.065"
+  },
+  "layers": [
+    {
+      "if": "background_image",
+      "component": "image",
+      "cover": true,
+      "blur": "{{brand.background_blur|8}}",
+      "darken": "{{brand.background_darken|0.5}}",
+      "set": {
+        "image": "{{background_image}}"
+      }
+    },
+    {
+      "if": "background_video",
+      "component": "video",
+      "set": {
+        "video": "{{background_video}}",
+        "loop": true
+      }
+    },
+    {
+      "if": "!background",
+      "component": "color",
+      "set": {
+        "color1": "{{brand.colors.background|#14142b}}",
+        "color2": "{{brand.colors.secondary|#3a2160}}",
+        "fillType": "Linear Gradient"
+      }
+    },
+    {
+      "component": "waveform",
+      "set": {
+        "mode": "Frequency Bar",
+        "mono": true,
+        "amplitude": "Square root",
+        "color": "{{brand.colors.primary|#ffcc00}}",
+        "opacity": 90
+      }
+    },
+    {
+      "if": "brand.logo",
+      "component": "image",
+      "fit": [
+        "W*0.14",
+        "H*0.12"
+      ],
+      "anchor": "top-right",
+      "margin": "H*0.05",
+      "set": {
+        "image": "{{brand.logo}}"
+      }
+    },
+    {
+      "component": "text",
+      "set": {
+        "title": "{{title}}",
+        "font": "{{brand.font.file|DejaVu Sans}}",
+        "fontStyle": "Bold",
+        "fontSize": "H*0.06",
+        "textColor": "{{brand.colors.text|#ffffff}}",
+        "alignment": "Left",
+        "xPosition": "H*0.05",
+        "yPosition": "H*0.11",
+        "shadow": true
+      }
+    },
+    {
+      "if": "artist",
+      "component": "text",
+      "set": {
+        "title": "{{artist}}",
+        "font": "{{brand.font.file|DejaVu Sans}}",
+        "fontSize": "H*0.035",
+        "textColor": "{{brand.colors.primary|#ffcc00}}",
+        "alignment": "Left",
+        "xPosition": "H*0.05",
+        "yPosition": "H*0.17",
+        "shadow": true
+      }
+    }
+  ]
+}
